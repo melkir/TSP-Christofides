@@ -407,5 +407,3 @@ void TSP::printCities() {
     for (vector<City>::iterator it = cities.begin(); it != cities.end(); ++it)
         cout << i++ << ":  " << it->x << " " << it->y << endl;
 }
-
-

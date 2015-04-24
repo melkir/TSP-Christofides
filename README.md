@@ -16,9 +16,9 @@ Utilisation
 ./tsp fichier_entree
 ```
 où fichier d'entrée est un fichier texte de format suivant:
-```   
+```
 0    x-coord    y-coord
-1    x-coord    y-coord 
+1    x-coord    y-coord
 .
 .
 .
@@ -35,7 +35,7 @@ Implémentation
 
 ### 1. L'algoritmhe de Christofides
 
-Christofides' est une heuristique de construction de cycle qui peut être appliqué aux graphes avec la propriété suivante : un graphe complet  _G_ = ( _V_,_E_,_w_ ) avec des poids d'arcs qui satisfont l'inégalité du triangle _w_(_x,y_) + _w_(_y,z_) ≤ _w_(_x,z_). 
+Christofides' est une heuristique de construction de cycle qui peut être appliqué aux graphes avec la propriété suivante : un graphe complet  _G_ = ( _V_,_E_,_w_ ) avec des poids d'arcs qui satisfont l'inégalité du triangle _w_(_x,y_) + _w_(_y,z_) ≤ _w_(_x,z_).
 
 Source : http://en.wikipedia.org/wiki/Christofides_algorithm
 
@@ -51,7 +51,7 @@ Source : http://en.wikipedia.org/wiki/Christofides_algorithm
 #### 1.1 Arbre couvrant minimun (MST)
 J'ai utilisé l'algorithme de Prim pour trouver l'arbre couvrant minimum dans G:
 ```scilab
-function MST(G = (V, E)) 
+function MST(G = (V, E))
   for v in V do
     key[v] <-- infinity
     parent[v] <-- NULL
@@ -59,10 +59,10 @@ function MST(G = (V, E))
   end for
   key[0] <-- 0
   while !Q.empty() do
-    v <-- Q.removeMin() 
+    v <-- Q.removeMin()
     for u adjacent to v do
       if u ∈ Q and weight(u, v) < key[u] then
-        parent[u] <-- v 
+        parent[u] <-- v
       end if
       key[v] <-- weight(u,v)
     end for

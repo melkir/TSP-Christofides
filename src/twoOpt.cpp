@@ -61,5 +61,3 @@ int twoOpt(int **graph, vector<int> &path, int &pathLength, int n) {
     }
     return pathLength;
 }
-
-
