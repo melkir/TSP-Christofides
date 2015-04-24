@@ -28,7 +28,7 @@ n-1  x-coord    y-coord
 et <i>n</i> est le nombre de villes
 
 #### Sortie du programme
-Un nouveau fichier texte (.tour) contenant n lignes, où n est le nombre de villes. La première ligne correspond à la longueur de la meilleur tournée trouvé. Les autres lignes correspondent aux identifiants de chaque villes, dans l'ordre dans lesquelles elles sont visités par la tournée. Chaque ville n'apparait qu'une seule fois dans la liste.
+Un nouveau fichier texte (.tour) contenant n + 1 lignes, où n est le nombre de villes. La première ligne correspond à la longueur de la meilleur tournée trouvé. Les n lignes suivantes correspondent aux identifiants de chaque villes, dans l'ordre dans lesquelles elles sont visités par la tournée. Chaque ville n'apparait qu'une seule fois dans la liste.
 
 Implémentation
 -----------
@@ -43,8 +43,8 @@ Source : http://en.wikipedia.org/wiki/Christofides_algorithm
 2. Soit O l'ensemble des sommets avec un degré impair dans T
 3. Trouver un couplage parfait M avec un poids minimum sur les sommets de O
 4. Ajouter M à T pour obtenir multigraphe H
-5. Trouver un cycle eulérien de H
-6. Convertir le cycle Eulerien en un chemin Hamiltonien en sautant les nœuds visités (shortcuts).
+5. Trouver un cycle Eulérien de H
+6. Convertir le cycle Eulérien en un chemin Hamiltonien en sautant les nœuds visités (shortcuts).
 
 ![alt text][fig1]
 
@@ -106,13 +106,13 @@ end function
 L'ensemble des sommets pair est maintenant ajouté à notre MST, formant un nouveau multigraphe.
 
 #### 1.4 Cycle Eulérien
-Ensuite, nous parcourons le graphe de façon à créer un cycle eulérien. A partir de n'importe quel noeud dans notre multigraphe. Si notre noeud à des voisins, on l'ajoute à la pile, on sélectionne un voisin, on retire l'arc entre ceux-ci du graphe, puis on utilise ce voisin comme sommet courant. Si notre sommet n'a pas de voisins à gauche, nous l'ajoutons à notre cycle et l'enlevons de la liste pour l'utiliser comme sommet courrant. On continue à tracer le cycle de cette façon jusqu'à qu'a ce que la pile soit vide et que le dernier sommet n'ai plus de voisins à gauche.
+Ensuite, nous parcourons le graphe de façon à créer un cycle eulérien. Pour commencer on choisi aléatoirement un noeud de notre multigraphe, si ce noeud à des voisins, on l'ajoute à une pile, on sélectionne un voisin, on supprime l'arrête qui les relies du graphe, puis on utilise ce voisin comme sommet courant. Si notre sommet n'a pas de voisins à gauche, nous l'ajoutons à notre cycle et l'enlevons de la pile afin de l'utiliser comme sommet courrant. On continue à tracer le cycle de cette façon jusqu'à qu'a ce que la pile soit vide et que le dernier sommet n'ai plus de voisins à gauche.
 
 ![alt text][fig4]
 
 
 #### 1.5 Chemin Hamiltonien
-Enfin, nous transformons notre cycle Eulérien en un chemin Hamiltonien en marchant le long de la tournée Euler, tout en vérifiant à chaque arrêt si ce nœud a déjà été visité. Si c'est le cas, nous ignorerons ce nœud et passons au suivant. Comme notre graphe satisfait à l'inégalité du triangle, court-circuité les sommets de cette manière n'augmentera pas la longueur de notre chemin.
+Enfin, nous transformons notre cycle Eulérien en un chemin Hamiltonien en marchant le long de la tournée Euler, tout en vérifiant à chaque arrêt si ce nœud a déjà été visité. Si c'est le cas, nous ignorons ce nœud et passons au suivant. Comme notre graphe satisfait à l'inégalité du triangle, court-circuité les sommets de cette manière n'augmentera pas la longueur de notre chemin.
 
 ![alt text][fig5]
 
