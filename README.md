@@ -81,7 +81,7 @@ La prochaine étape consiste à trouver les sommets de degré impair dans le MST
 
 #### 1.3 Parfaite adéquation pondérée pour sommets impairs
 
-Nous constatons maintenant un couplage parfait entre ces sommets afin que tous les sommets aient le même degré. Idéalement, nous aimerions trouver une correspondance minimale, mais dans le cas présent j'ai utilisé un algorithme glouton de trouver une correspondance minimale approximative.
+Nous constatons maintenant un couplage parfait entre ces sommets afin que tous les sommets aient le même degré. Idéalement, nous aimerions trouver une correspondance minimale, mais dans le cas présent j'ai utilisé un algorithme glouton pour trouver une correspondance minimale approximative.
 
 ```scilab
 function PerfectMatching()
@@ -103,7 +103,7 @@ end function
 
 ![alt text][fig3]
 
-L'ensemble des sommets pair est maintenant ajouté à notre MST, formant un nouveau multigraphe.
+L'ensemble des sommets pairs sont maintenant ajoutés à notre MST, formant un nouveau multigraphe.
 
 #### 1.4 Cycle Eulérien
 Ensuite, nous parcourons le graphe de façon à créer un cycle eulérien. Pour commencer on choisi aléatoirement un noeud de notre multigraphe, si ce noeud à des voisins, on l'ajoute à une pile, on sélectionne un voisin, on supprime l'arrête qui les relies du graphe, puis on utilise ce voisin comme sommet courant. Si notre sommet n'a pas de voisins à gauche, nous l'ajoutons à notre cycle et l'enlevons de la pile afin de l'utiliser comme sommet courrant. On continue à tracer le cycle de cette façon jusqu'à qu'a ce que la pile soit vide et que le dernier sommet n'ai plus de voisins à gauche.
