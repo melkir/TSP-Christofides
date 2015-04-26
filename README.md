@@ -117,9 +117,7 @@ Enfin, nous transformons notre cycle Eulérien en un chemin Hamiltonien en march
 ![alt text][fig5]
 
 ### 2. Two-Opt
-Après qu'une tournée ai été construite en utilisant l'heuristique Christofides, j'ai appliqué l'algorithme de recherche locale 2-opt pour optimiser le chemin. 
-
-L’algorithme 2.opt examine chaque arête du parcours. Pour chaque arête, il regarde toutes les arêtes non adjacentes, et détermine si en enlevant ces deux arêtes puis en les remettant d'une autres façon cela raccourcirait le parcours. Si c’est le cas, les arêtes sont échangées. La recherche continue jusqu’à ce que le parcours ne puisse plus être optimisé de cette façon.
+Après qu'une tournée ai été construite en utilisant l'heuristique Christofides, j'ai appliqué l'algorithme de recherche locale 2-opt pour optimiser le chemin. L’algorithme 2.opt examine chaque arête du parcours. Pour chaque arête, il regarde toutes les arêtes non adjacentes, et détermine si en enlevant ces deux arêtes puis en les remettant d'une autres façon cela raccourcirait le parcours. Si c’est le cas, les arêtes sont échangées. La recherche continue jusqu’à ce que le parcours ne puisse plus être optimisé de cette façon.
 
 Source : http://fr.wikipedia.org/wiki/2-opt
 
