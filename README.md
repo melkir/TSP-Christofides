@@ -78,7 +78,7 @@ function MST(G = (V, E))
 end function
 ```
 
-L’algorithme traite un ensemble _Q_ contenant tous les sommets qui ne sont pas encore dans l’arbre (Initialement, _Q_ est vide). Le programme itère pour chaque sommet _v_ non encore présent dans l’arbre (utilisant le sommet 0 comme le sommet initial) et choisi l'arête de poids minimal _(u,v)_ où _u_ est un sommet déjà présent dans l’arbre. On obtient ainsi l'arête la plus légère traversant le passage (puisqu’il relie une arête dans le MST avec une arête qui n’y est pas encore). Le sommet _v_ est ensuite ajouté dans l’arbre. L’algorithme continue jusqu’à ce que _Q_ soit vide de sorte que tous les sommets soient ajoutés dans le MST.
+L’algorithme traite un ensemble _Q_ contenant tous les sommets qui ne sont pas encore dans l’arbre (Initialement, _Q_ est vide). Le programme itère pour chaque sommet _v_ non encore présent dans l’arbre (utilisant le sommet 0 comme le sommet initial) et choisi l'arête de poids minimal _(u,v)_ où _u_ est un sommet déjà présent dans l’arbre. On obtient ainsi l'arête de poids minimun traversant le passage (puisqu’il relie une arête dans le MST avec une arête qui n’y est pas encore). Le sommet _v_ est ensuite ajouté dans l’arbre. L’algorithme continue jusqu’à ce que _Q_ soit vide de sorte que tous les sommets soient ajoutés dans le MST.
 
 Source : http://fr.wikipedia.org/wiki/Algorithme_de_Prim
 
