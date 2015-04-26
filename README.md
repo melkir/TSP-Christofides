@@ -4,9 +4,9 @@ Implementation du TSP avec l'heuristique de Christofides
 Présentation
 -----------
 
-Problème: Etant donné un ensemble de villes séparées par des distances données, trouver l'itinéraire le plus court passant par chaque ville une et une seule fois.
+**Problème**: Etant donné un ensemble de villes séparées par des distances données, trouver l'itinéraire le plus court passant par chaque ville une et une seule fois.
 
-Implementation: Utiliser l'heuristique de Christofides pour construire un cycle puis l'algorithme de recherche locale 2-opt pour l'améliorer.
+**Implémentation**: Utiliser l'heuristique de Christofides pour construire un cycle puis l'algorithme de recherche locale 2-opt pour l'améliorer.
 
 
 Utilisation
@@ -112,7 +112,7 @@ Ensuite, nous parcourons le graphe de façon à créer un cycle eulérien. Pour 
 
 
 #### 1.5 Chemin Hamiltonien
-Enfin, nous transformons notre cycle Eulérien en un chemin Hamiltonien en marchant le long de la tournée Euler, tout en vérifiant à chaque arrêt si ce nœud a déjà été visité. Si c'est le cas, nous ignorons ce nœud et passons au suivant. Comme notre graphe satisfait à l'inégalité du triangle, court-circuité les sommets de cette manière n'augmentera pas la longueur de notre chemin.
+Enfin, nous transformons notre cycle Eulérien en un chemin Hamiltonien en marchant le long de la tournée Euler, tout en vérifiant à chaque arrêt si ce nœud a déjà été visité. Si c'est le cas, nous ignorons ce nœud et passons au suivant. Comme notre graphe satisfait l'inégalité du triangle, court-circuité de cette façon les sommets n'augmentera pas la longueur de notre chemin.
 
 ![alt text][fig5]
 
