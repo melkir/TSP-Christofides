@@ -8,12 +8,20 @@ Présentation
 
 **Implémentation**: Utiliser l'heuristique de Christofides pour construire un cycle puis l'algorithme de recherche locale 2-opt pour l'améliorer.
 
+Compilation
+-----------
+Dépendances : [CMake](http://www.cmake.org/), [boost-libs](http://www.boost.org/)
+```
+git clone https://github.com/melkir/TSP-Christofides.git
+cd TSP-Christofides
+mkdir build; cd build; cmake ../.; make
+```
 
 Utilisation
 -----------
 
 ```
-./tsp fichier_entree
+./TSP_Christofides fichier_entree
 ```
 où fichier d'entrée est un fichier texte de format suivant:
 ```
