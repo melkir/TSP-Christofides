@@ -27,7 +27,7 @@ n-1  x-coord    y-coord
 ```
 et <i>n</i> est le nombre de villes
 
-#### Sortie du programme
+#### Résultats du programme
 Un nouveau fichier texte (.tour) contenant n + 1 lignes, où n est le nombre de villes. La première ligne correspond à la longueur de la meilleur tournée trouvé. Les n lignes suivantes correspondent aux identifiants de chaque villes, dans l'ordre dans lesquelles elles sont visités par la tournée. Chaque ville n'apparait qu'une seule fois dans la liste.
 
 Implémentation
@@ -70,7 +70,7 @@ function MST(G = (V, E))
 end function
 ```
 
-L'étape d'initialisation consiste à choisir un sommet quelconque du graphe initial. Au bout de la première étape, on se retrouve ainsi avec un arbre contenant 1 sommet et 0 arête. Ensuite, on construit récursivement l'arbre minimal de la façon suivante : à l'étape n, ayant déjà construit un arbre contenant n sommets et n-1 arêtes, on établit la liste de toutes les arêtes reliant un sommet de l'arbre à un sommet qui n'est pas sur l'arbre. On choisit alors une arête de poids minimal, que l'on rajoute à l'arbre ; l'arbre contient à présent n+1 sommets et n arêtes. L'algorithme se termine lorsque tous les sommets du graphe sont contenus dans l'arbre.
+L’algorithme traite un ensemble _Q_ contenant tous les sommets qui ne sont pas encore dans l’arbre (Initialement, _Q_ est vide). Le programme itère pour chaque sommet _v_ non encore présent dans l’arbre (utilisant le sommet 0 comme le sommet initial) et choisi l'arête de poids minimal _(u,v)_ où _u_ est un sommet déjà présent dans l’arbre. On obtient ainsi l'arête la plus légère traversant le passage (puisqu’il relie une arête dans le MST avec une arête qui n’y est pas encore). Le sommet _v_ est ensuite ajouté dans l’arbre. L’algorithme continue jusqu’à ce que _Q_ soit vide de sorte que tous les sommets soient ajoutés dans le MST.
 
 Source : http://fr.wikipedia.org/wiki/Algorithme_de_Prim
 
@@ -81,7 +81,7 @@ La prochaine étape consiste à trouver les sommets de degré impair dans le MST
 
 #### 1.3 Parfaite adéquation pondérée pour sommets impairs
 
-Nous constatons maintenant un couplage parfait entre ces sommets afin que tous les sommets aient le même degré. Idéalement, nous aimerions trouver une correspondance minimale, mais dans le cas présent j'ai utilisé un algorithme glouton pour trouver une correspondance minimale approximative.
+Un graphe de connexe sans boucles a un _n_ arrête et _n-1_ degrés. Nous trouvons maintenant une correspondance parfaite de tous ces sommets de telle sorte que tous les sommets aient un degrés pair. Idéalement, nous devrions trouver une correspondance minimale, mais a la place, j’ai utilisé un algorithme glouton pour trouver une correspondance minimale approximative.
 
 ```scilab
 function PerfectMatching()
@@ -106,7 +106,7 @@ end function
 L'ensemble des sommets pairs sont maintenant ajoutés à notre MST, formant un nouveau multigraphe.
 
 #### 1.4 Cycle Eulérien
-Ensuite, nous parcourons le graphe de façon à créer un cycle eulérien. Pour commencer on choisi aléatoirement un noeud de notre multigraphe, si ce noeud à des voisins, on l'ajoute à une pile, on sélectionne un voisin, on supprime l'arrête qui les relies du graphe, puis on utilise ce voisin comme sommet courant. Si notre sommet n'a pas de voisins à gauche, nous l'ajoutons à notre cycle et l'enlevons de la pile afin de l'utiliser comme sommet courrant. On continue à tracer le cycle de cette façon jusqu'à qu'a ce que la pile soit vide et que le dernier sommet n'ai plus de voisins à gauche.
+Ensuite, nous parcourons le graphe de façon à créer un cycle eulérien. Pour commencer on choisi aléatoirement un noeud de notre multigraphe, si ce noeud à des voisins, on l'ajoute à une pile, on sélectionne un voisin, on supprime l'arrête qui les relies du graphe, puis on utilise ce voisin comme sommet courant. Si notre sommet n’a plus de voisin, nous l’ajoutons à notre parcours et enlevons le sommet en haut de la pile pour l’utiliser comme notre sommet courant. Nous continuons le tracé de notre parcours de cette façon jusqu’à ce que la pile soit vide et que le dernier sommet n’ai plus de voisin.
 
 ![alt text][fig4]
 
@@ -117,7 +117,9 @@ Enfin, nous transformons notre cycle Eulérien en un chemin Hamiltonien en march
 ![alt text][fig5]
 
 ### 2. Two-Opt
-Après qu'une tournée ai été construite en utilisant l'heuristique Christofides, j'ai appliqué l'algorithme de recherche locale 2-opt pour optimiser le chemin. A chaque étape, on supprime deux arêtes de la solution courante et on reconnecte les deux tours ainsi formés. Cette méthode permet, entre autres, d'améliorer le coût des solutions en supprimant les arêtes sécantes lorsque l'inégalité triangulaire est respectée.
+Après qu'une tournée ai été construite en utilisant l'heuristique Christofides, j'ai appliqué l'algorithme de recherche locale 2-opt pour optimiser le chemin. 
+
+L’algorithme 2.opt examine chaque arête du parcours. Pour chaque arête, il regarde toutes les arêtes non adjacentes, et détermine si en enlevant ces deux arêtes puis en les remettant d'une autres façon cela raccourcirait le parcours. Si c’est le cas, les arêtes sont échangées. La recherche continue jusqu’à ce que le parcours ne puisse plus être optimisé de cette façon.
 
 Source : http://fr.wikipedia.org/wiki/2-opt
 
