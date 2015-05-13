@@ -1,4 +1,5 @@
 # Problème du voyageur de commerce
+Version française traduite de : https://github.com/beckysag/traveling-salesman/blob/master/README.md
 Implementation du TSP avec l'heuristique de Christofides
 
 Présentation
